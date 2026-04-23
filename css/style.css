@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 10%;
+  padding: 20px 10%;
 }
 
 
@@ -41,21 +41,23 @@ body {
 
 .buttons {
   display: flex;
-  justify-content: flex-start;
   gap: 15px;
-  margin-left: 120px;
 }
 
 .btn {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background:  rgba(31, 8, 8, 0.514);
   color: white;
   text-decoration: none;
-  border-radius: 10px;
+  border: 1px solid white;
+  border-radius: 25px;
   border-color: white;
-  border-width: 10px;
+  border-width: 2px;
 }
 
+.btn:hover {
+  background: rgba(255,255,255,0.2);
+}
 
 .home-image img {
   width: 400px;
@@ -68,7 +70,7 @@ body {
 .about {
   color : white;
   justify-content: space-between;
-  padding: 60px 10%;
+  padding: 20px 10%;
 }
 
 
@@ -93,7 +95,7 @@ body {
 .projects {
   color : rgba(39, 2, 2, 0.514);
   justify-content: space-between;
-  padding: 60px 10%;
+  padding: 20px 10%;
 }
 
 .project-list {
@@ -103,8 +105,10 @@ body {
 }
 .project-card {  
   background: rgba(31, 8, 8, 0.514);  
-  padding: 20px;  
-  border-radius: 10px;  
+  padding: 20px; 
+  border: 1px solid white; 
+  border-radius: 10px; 
+  border-width:2px; 
   width: 250px;  
   transition: 0.3s;
 }
@@ -122,6 +126,8 @@ body {
 .project-card a {  
   color: rgb(104, 148, 169);  
   text-decoration: none;
+  flex: 1 1 300px;
+  max-width: 400px;
 }
 
 .project-card:hover {
@@ -135,7 +141,53 @@ body {
     text-align: center;
   }
 
+  .home-image img {
+    width: 250px;
+    margin-top: 20px;
+  }
+
+  .buttons {
+    margin-left: 0;
+    justify-content: center;
+  }
+
   .project-list {
     justify-content: center;
   }
+}
+
+.connect {
+  color : rgba(39, 2, 2, 0.514);
+  padding: 20px 10%;
+  text-align: left;  
+}
+
+.links {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.links a {
+  padding: 10px 20px;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  background: rgba(31, 8, 8, 0.514)
+}
+
+.links a:hover {
+  background: white;
+  color: rgb(7, 89, 97);
+}
+
+.container {
+  max-width: 900px;
+  margin-left: 0;
+}
+
+.connect p{
+  color: white;
 }
