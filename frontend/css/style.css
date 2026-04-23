@@ -191,3 +191,27 @@ body {
 .connect p{
   color: white;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  
+  max-width: 400px;
+} 
+
+.form input, .form textarea, .form button {
+  background-color:rgba(31, 8, 8, 0.514);
+  border: 1px solid white;  
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: white;
+}
+
+.form button:hover {
+  background: rgb(7, 89, 97);  
+}
