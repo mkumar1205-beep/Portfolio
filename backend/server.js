@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "public")));
+
+
 app.post("/send", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -29,6 +33,7 @@ app.post("/send", async (req, res) => {
 
     res.send("Message sent!");
   } catch (error) {
+    console.error("ERROR:", error);
     res.status(500).send("Error sending message");
   }
 });

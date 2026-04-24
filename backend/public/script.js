@@ -8,7 +8,7 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
     message: document.getElementById("message").value
   };
 
-  const res = await fetch("http://localhost:5000/send", {
+  const res = await fetch("/send", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
