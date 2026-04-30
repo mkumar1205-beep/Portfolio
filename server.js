@@ -15,7 +15,7 @@ app.get("/health", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile("public/index.html", { root: process.cwd() });
 });
 
 app.post("/send", async (req, res) => {
@@ -52,6 +52,11 @@ app.post("/send", async (req, res) => {
 });
 
 const PORT = Number(process.env.PORT) || 8080;
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
-});
+
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
