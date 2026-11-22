@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manya Kumar — Resume | Systems &amp; Backend Engineer</title>
+  <meta name="description" content="Official Resume of Manya Kumar. Computer Science & Cyber Security Undergraduate based in Bangalore, India. Backend & Systems Developer.">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090b0e;
+      --card-bg: #11141a;
+      --border: #1e2430;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --signal: #38bdf8;
+      --signal-dark: #0284c7;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .top-bar {
+      height: 60px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #374151;
+    }
+
+    .doc-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-badge {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--signal);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-download {
+      background: var(--signal-dark);
+      color: #ffffff;
+      border: 1px solid var(--signal);
+      box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
+    }
+
+    .btn-download:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border-color: #4b5563;
+    }
+
+    .viewer-container {
+      flex: 1;
+      width: 100%;
+      height: calc(100vh - 60px);
+      background: #090b0e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #11141a;
+    }
+
+    .pdf-fallback {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+    }
+
+    .pdf-fallback h2 {
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .pdf-fallback p {
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      .top-bar {
+        padding: 0 14px;
+      }
+      .doc-badge {
+        display: none;
+      }
+      .btn-secondary {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <a href="/" class="back-btn">&larr; Portfolio</a>
+      <span class="doc-title">
+        Manya_Kumar_Resume.pdf
+        <span class="doc-badge">Official</span>
+      </span>
+    </div>
+    <div class="top-bar-right">
+      <a href="/Manya_Kumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="action-btn btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        Open in Tab
+      </a>
+      <a href="/Manya_Kumar_Resume.pdf" download="Manya_Kumar_Resume.pdf" class="action-btn btn-download">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download PDF
+      </a>
+    </div>
+  </header>
+
+  <main class="viewer-container">
+    <iframe src="/Manya_Kumar_Resume.pdf" title="Manya Kumar Resume">
+      <div class="pdf-fallback">
+        <h2>Manya Kumar — Resume</h2>
+        <p>Your browser does not support embedding PDFs directly.</p>
+        <a href="/Manya_Kumar_Resume.pdf" download="Manya_Kumar_Resume.pdf" class="action-btn btn-download">
+          Download Manya_Kumar_Resume.pdf
+        </a>
+      </div>
+    </iframe>
+  </main>
+
+</body>
+</html>

@@ -1,76 +1,909 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="onyx">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manya Kumar Backend &amp; Full-Stack Engineer</title>
+  <meta name="description" content="Portfolio of Manya Kumar, Systems, Backend & Full-Stack Engineer. Building high-concurrency engines, robotics simulations, and isolated security sandboxes.">
+  <meta name="keywords" content="Manya Kumar, Backend Developer, Full Stack Developer, Node.js, FastAPI, Python, WebSockets, Docker, Redis, Playwright, ROS 2, Point Blank">
+  <meta name="author" content="Manya Kumar">
+  <meta name="theme-color" content="#08090a">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Manya Kumar — Backend &amp; Full-Stack Engineer">
+  <meta property="og:description" content="Engineering high-concurrency backends, isolated security sandboxes, and resilient full-stack systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://manya-kumar.vercel.app">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Ambient Spotlight Gradient (follows cursor) -->
+  <div class="pointer-spotlight" id="spotlight"></div>
+  <div class="background-grid"></div>
 
-  <section class="home">
-      <div class="home-content">
-        <h1>Hi, I'm Manya</h1>
-        <p>
-          I’m currently learning web development and building real world projects to enhance my skills.
-        </p>
+  <!-- Navigation -->
+  <header class="site-header" id="header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Home">
+        <span class="mono-prefix">&gt;</span> manya<span class="signal-dot">.</span>
+      </a>
 
-        <div class="buttons">
-          <a href="#projects" class="btn">View Projects</a>
-          <a href="#connect" class="btn btn-outline">Connect With Me</a>
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="#about" class="nav-link"><span>01.</span> About</a>
+        <a href="#projects" class="nav-link"><span>02.</span> Projects</a>
+        <a href="#skills" class="nav-link"><span>03.</span> Skills</a>
+        <a href="#achievements" class="nav-link"><span>04.</span> Achievements</a>
+        <a href="#education" class="nav-link"><span>05.</span> Education</a>
+        <a href="#contact" class="nav-link"><span>06.</span> Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="icon-btn" title="Toggle Theme (Onyx / Plum)" aria-label="Toggle Theme">
+          <svg class="theme-icon onyx-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg class="theme-icon plum-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Resume Modal Trigger -->
+        <button id="openResumeBtn" class="btn btn-sm btn-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Resume</span>
+        </button>
+
+        <a href="#contact" class="btn btn-sm btn-signal">
+          <span>Let's Talk</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuToggle" class="mobile-toggle" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-content">
+      <nav class="mobile-links">
+        <a href="#about" class="mobile-link"><span>01.</span> About</a>
+        <a href="#projects" class="mobile-link"><span>02.</span> Projects</a>
+        <a href="#skills" class="mobile-link"><span>03.</span> Skills</a>
+        <a href="#achievements" class="mobile-link"><span>04.</span> Achievements</a>
+        <a href="#education" class="mobile-link"><span>05.</span> Education &amp; Activities</a>
+        <a href="#contact" class="mobile-link"><span>06.</span> Contact</a>
+        <a href="/resume" class="mobile-link"><span>07.</span> View Resume Page</a>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <div class="location-chip">
+          <span class="live-dot"></span> Bangalore, IN (UTC+5:30)
         </div>
       </div>
-    
-      <div class="home-image">
-        <img src="images/WhatsApp Image 2026-04-06 at 22.53.16.jpeg" alt="profile">
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <!-- Status Pill -->
+        <div class="status-badge">
+          <span class="pulse-indicator">
+            <span class="pulse-ring"></span>
+            <span class="pulse-core"></span>
+          </span>
+          <span class="status-text">Available for Full Stack &amp; Backend Engineering Internships</span>
+          <span class="status-divider">•</span>
+          <span class="status-location">Bangalore, India</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="hero-kicker">
+              <span class="kicker-pill">FULL STACK &amp; BACKEND</span>
+              <span class="kicker-sep">/</span>
+              <span class="kicker-sub">COMPUTER SCIENCE UNDERGRAD</span>
+            </div>
+
+            <h1 class="hero-title">
+              MANYA KUMAR
+            </h1>
+
+            <p class="hero-description">
+              Engineering systems that scale. Building ideas that matter.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-signal btn-lg">
+                <span>Explore Projects</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M7 17l9.2-9.2M17 17V8H8"></path>
+                </svg>
+              </a>
+
+              <a href="#achievements" class="btn btn-ghost btn-lg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>Achievements</span>
+              </a>
+
+              <button id="heroResumeBtn" class="btn btn-outline btn-lg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>Resume</span>
+              </button>
+            </div>
+
+            <div class="hero-social-row">
+              <a href="https://github.com/mkumar1205-beep" target="_blank" rel="noopener noreferrer" class="social-chip" title="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/mkumar1205/" target="_blank" rel="noopener noreferrer" class="social-chip" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+
+              <a href="https://x.com/MK2081274016834" target="_blank" rel="noopener noreferrer" class="social-chip" title="X (Twitter)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>X / Twitter</span>
+              </a>
+
+              <a href="mailto:manyakumar1205@gmail.com" class="social-chip" title="Email Manya">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-  </section>
+    </section>
 
-  <section id="about" class="about"> 
-      <h2>About Me</h2>
-      <p>I am currently exploring Web Development and I'm passionate about creating user-friendly applications. I'm a first year undergraduate. I like participating in hackathons and building real-world solutions.</p>
-  </section>    
-
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="container">
-      <div class="project-list">
-        <div class="project-card">
-          <h3>To-do list application</h3>
-          <p>A web application that allows users to track their todos and set priorities.</p>
-          <a href="https://github.com/mkumar1205-beep/todo-list" target="_blank">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Load Tester</h3>
-          <p>A  CLI tool for testing the performance and load handling of web applications.</p>
-          <a href="https://github.com/mkumar1205-beep/Load-Tester" target="_blank">View Project</a>
-        </div>
-    </div> 
-  </section> 
-
-    <section id="connect" class="connect">
+    <!-- About Section -->
+    <section class="section about-section" id="about">
       <div class="container">
-          <h2>Connect With Me</h2>
-            <p>You can find me on the following platforms:</p>
-              <div class = "links">           
-                <a href="https://www.linkedin.com/in/mkumar1205/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/mkumar1205-beep" target="_blank">GitHub</a>
-                <a href="https://x.com/MK2081274016834" target="_blank">X</a>
-                <a href="mailto:manyakumar1205@gmail.com" target="_blank">Email</a>
-              </div>
+        <div class="section-header">
+          <div class="section-tag mono"> 01. ABOUT ME</div>
+          <h2 class="section-title">Bridging backend engineering with defensive systems.</h2>
         </div>
-      <h3>Contact Form</h3>
-      <form id="contactForm" class="form">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <textarea id="message" placeholder="Your Message"></textarea>
-        <button type="submit">Send</button>
-      </form>
 
-  </section>
+        <div class="about-grid">
+          <div class="about-text-col">
+            <p class="lead-text">
+              I am a Computer Science &amp; Engineering undergraduate based in Bangalore, India.
+            </p>
+            <p>
+              My primary focus centers on <strong>backend distributed architecture and full-stack web applications</strong>. I am fascinated by what happens beneath the surface: how servers handle concurrent persistent WebSocket connections, how isolated sandboxes monitor zero-day network traffic safely, and how data pipelines can be architected without bottlenecks.
+            </p>
+            <p>
+              Beyond solo engineering, I am an active contributor to <strong>Point Blank</strong>, a premier student technical club, where I maintain and optimize web infrastructure, write robust code, and collaborate with like minded developers on technical initiatives.
+            </p>
+
+            <div class="about-bullet-list">
+              <div class="bullet-item">
+                <span class="bullet-icon mono">&gt;</span>
+                <div>
+                  <strong>High-Concurrency Systems:</strong> Hands-on experience stress-testing event loops, WebSocket throughput, and tail latencies with custom Node.js CLI engines.
+                </div>
+              </div>
+              <div class="bullet-item">
+                <span class="bullet-icon mono">&gt;</span>
+                <div>
+                  <strong>Sandboxing &amp; Security:</strong> Built automated isolated runtimes with Playwright, mitmproxy, and Docker resource limits to intercept credential exfiltration.
+                </div>
+              </div>
+              <div class="bullet-item">
+                <span class="bullet-icon mono">&gt;</span>
+                <div>
+                  <strong>Modern Full-Stack:</strong> Crafting snappy, end-to-end applications utilizing FastAPI, Node.js, Express, React 19, TypeScript, and MongoDB.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-meta-col">
+            <div class="meta-box">
+              <h3 class="meta-title mono"> QUICK SPECS</h3>
+              <ul class="meta-specs-list mono">
+                <li>
+                  <span class="spec-label">Location</span>
+                  <span class="spec-value">Bangalore, Karnataka, IN</span>
+                </li>
+                <li>
+                  <span class="spec-label">Degree</span>
+                  <span class="spec-value">B.E. CSE</span>
+                </li>
+                <li>
+                  <span class="spec-label">Club</span>
+                  <span class="spec-value">Point Blank (Core Tech)</span>
+                </li>
+                <li>
+                  <span class="spec-label">Primary Languages</span>
+                  <span class="spec-value">TypeScript, JS, Python, C++</span>
+                </li>
+                <li>
+                  <span class="spec-label">Availability</span>
+                  <span class="spec-value highlight-signal">Open to Internships</span>
+                </li>
+              </ul>
+
+              <div class="meta-download-box">
+                <a href="#contact" class="btn btn-signal btn-block">Get In Touch</a>
+                <button class="btn btn-outline btn-block" onclick="document.getElementById('openResumeBtn').click()">View Verified Resume</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono"> 02. FEATURED PROJECTS</div>
+          <h2 class="section-title">Engineered for scale, security, and real-time speed.</h2>
+          <p class="section-subtitle">
+            Not generic to-do apps: robotics simulation compilers, network traffic inspection sandboxes, and high-concurrency WebSocket test engines.
+          </p>
+        </div>
+
+        <div class="projects-list">
+
+          <!-- Project 1: Lang2Sim -->
+          <article class="project-card featured-project">
+            <div class="project-card-top">
+              <div class="project-badge-row">
+                <span class="badge badge-accent">AI SIMULATION COMPILER</span>
+                <span class="badge badge-subtle">ROBOTICS &amp; SENSORS</span>
+                <span class="badge badge-year mono">2026</span>
+              </div>
+              <div class="project-external-links">
+                <a href="https://github.com/mkumar1205-beep/Lang2Sim" target="_blank" rel="noopener noreferrer" class="link-icon" title="View Source on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content-grid">
+              <div class="project-info">
+                <h3 class="project-title">Lang2Sim</h3>
+                <p class="project-tagline">
+                  AI-powered simulation compiler &amp; adversarial testing engine for ROS 2 &amp; Gazebo.
+                </p>
+
+                <div class="project-details">
+                  <p>
+                    Architected an AI powered simulation compiler that converts natural language instructions into physics verified Gazebo environments and Nav2 occupancy grids, reducing manual simulation setup time.
+                  </p>
+                  <p>
+                    Developed a mathematical <strong>Zero SLAM mapping system</strong> using Shapely and NumPy to generate pixel accurate 2D occupancy grids directly from simulation geometry.
+                  </p>
+                  <p>
+                    Engineered a <strong>FastMCP based adversarial testing system</strong> to introduce dynamic obstacles and lighting changes during navigation, integrating a path feasibility checker to ensure generated scenarios remain solvable.
+                  </p>
+                </div>
+
+                <!-- Architecture Pipeline Diagram -->
+                <div class="architecture-flow mono">
+                  <span class="flow-step">Natural Language Prompt</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step">NVIDIA Nemotron 3 Ultra 550B</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step">Gazebo Harmonic SDF</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step">Zero-SLAM 2D Grid Slicing</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step highlight">Nav2 Feasible Path</span>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">ROS 2 (Jazzy)</span>
+                  <span class="tech-tag">Gazebo Harmonic</span>
+                  <span class="tech-tag">Nav2</span>
+                  <span class="tech-tag">TurtleBot3</span>
+                  <span class="tech-tag">NVIDIA Nemotron 3 Ultra 550B</span>
+                  <span class="tech-tag">FastMCP</span>
+                  <span class="tech-tag">Pydantic V2</span>
+                  <span class="tech-tag">Shapely</span>
+                  <span class="tech-tag">NumPy</span>
+                  <span class="tech-tag">FastAPI</span>
+                  <span class="tech-tag">WebSockets</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Pytest</span>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/mkumar1205-beep/Lang2Sim" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-signal">
+                    <span>View Repository</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="project-visual">
+                <div class="project-spec-panel">
+                  <div class="spec-panel-header">
+                    <span class="spec-panel-title">Compiler Architecture Specs</span>
+                    <span class="spec-panel-status mono">SIM_VERIFIED</span>
+                  </div>
+                  <div class="spec-panel-body">
+                    <ul class="spec-feature-list mono">
+                      <li class="spec-feature-item">
+                        <span class="spec-feature-icon">▹</span>
+                        <div><strong>SDF Validation:</strong> Physics-compliant collision, inertia, and joint boundary validation.</div>
+                      </li>
+                      <li class="spec-feature-item">
+                        <span class="spec-feature-icon">▹</span>
+                        <div><strong>Zero-SLAM Slicer:</strong> Pixel-accurate 2D costmaps extracted in milliseconds without sensor lag.</div>
+                      </li>
+                      <li class="spec-feature-item">
+                        <span class="spec-feature-icon">▹</span>
+                        <div><strong>FastMCP Stress:</strong> Dynamic obstacle injection with mathematical A* path solvability verification.</div>
+                      </li>
+                    </ul>
+
+                    <div class="spec-metric-row">
+                      <div class="spec-metric-box">
+                        <div class="spec-metric-num">Zero-SLAM</div>
+                        <div class="spec-metric-lbl">Direct Geometry Slicing</div>
+                      </div>
+                      <div class="spec-metric-box">
+                        <div class="spec-metric-num">100% Solvable</div>
+                        <div class="spec-metric-lbl">Feasibility Guaranteed</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: PhishGuard -->
+          <article class="project-card featured-project">
+            <div class="project-card-top">
+              <div class="project-badge-row">
+                <span class="badge badge-accent">DEFENSIVE SECURITY</span>
+                <span class="badge badge-subtle">ISOLATED SANDBOX</span>
+                <span class="badge badge-year mono">2026</span>
+              </div>
+              <div class="project-external-links">
+                <a href="https://github.com/mkumar1205-beep/PhishGuard" target="_blank" rel="noopener noreferrer" class="link-icon" title="View Source on GitHub">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-content-grid">
+              <div class="project-info">
+                <h3 class="project-title">PhishGuard</h3>
+                <p class="project-tagline">
+                  Full-stack phishing detection platform &amp; isolated sandbox microservice for real-time threat intelligence.
+                </p>
+
+                <div class="project-details">
+                  <p>
+                    Built a full stack phishing detection platform for Indian users combining WHOIS domain age checks, Levenshtein typosquatting and subdomain spoofing detection, and NLP scam pattern matching into a 0 100 risk score with bilingual English/Hindi verdicts.
+                  </p>
+                  <p>
+                    Engineered an isolated Playwright and mitmproxy sandbox microservice that opens suspicious sites in a headless browser, auto fills fake credentials and inspects traffic to detect credential exfiltration, deployed with Docker Compose on segmented networks with resource limits.
+                  </p>
+                  <p>
+                    Integrated Llama 3.3 70B for explainable verdicts, with rule based minimum scores so the LLM cannot override deterministic detection.
+                  </p>
+                </div>
+
+                <!-- Architecture Pipeline Diagram -->
+                <div class="architecture-flow mono">
+                  <span class="flow-step">Suspicious URL</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step">WHOIS + Levenshtein</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step">Isolated Headless Sandbox</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step">mitmproxy Interception</span>
+                  <span class="flow-arrow">&rarr;</span>
+                  <span class="flow-step highlight">Bilingual Risk Score (0-100)</span>
+                </div>
+
+                <div class="project-tags">
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">FastAPI</span>
+                  <span class="tech-tag">asyncio</span>
+                  <span class="tech-tag">Playwright</span>
+                  <span class="tech-tag">mitmproxy</span>
+                  <span class="tech-tag">OpenCV</span>
+                  <span class="tech-tag">Redis</span>
+                  <span class="tech-tag">Groq (Llama 3.3 70B)</span>
+                  <span class="tech-tag">React 19</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Vite</span>
+                  <span class="tech-tag">Tailwind CSS</span>
+                  <span class="tech-tag">TanStack Query</span>
+                  <span class="tech-tag">WebSockets</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Nginx</span>
+                </div>
+
+                <div class="project-actions">
+                  <a href="https://github.com/mkumar1205-beep/PhishGuard" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-signal">
+                    <span>View Repository</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"></path></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="project-visual">
+                <div class="project-spec-panel">
+                  <div class="spec-panel-header">
+                    <span class="spec-panel-title">Sandbox Threat Telemetry</span>
+                    <span class="spec-panel-status mono">ZERO_LEAK_ISOLATION</span>
+                  </div>
+                  <div class="spec-panel-body">
+                    <ul class="spec-feature-list mono">
+                      <li class="spec-feature-item">
+                        <span class="spec-feature-icon">▹</span>
+                        <div><strong>Docker Bridge Net:</strong> Isolated container runtime with strict memory, CPU &amp; disk quotas.</div>
+                      </li>
+                      <li class="spec-feature-item">
+                        <span class="spec-feature-icon">▹</span>
+                        <div><strong>mitmproxy Egress:</strong> Live HTTP/WS network stream inspection for stolen honeypot credentials.</div>
+                      </li>
+                      <li class="spec-feature-item">
+                        <span class="spec-feature-icon">▹</span>
+                        <div><strong>Deterministic Floor:</strong> Hardcoded security gates prevent LLM from overriding verified threat signals.</div>
+                      </li>
+                    </ul>
+
+                    <div class="spec-metric-row">
+                      <div class="spec-metric-box">
+                        <div class="spec-metric-num">0 - 100</div>
+                        <div class="spec-metric-lbl">Calibrated Risk Scoring</div>
+                      </div>
+                      <div class="spec-metric-box">
+                        <div class="spec-metric-num">EN / HI</div>
+                        <div class="spec-metric-lbl">Bilingual Threat Reports</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Additional Projects Grid -->
+          <div class="sub-projects-grid">
+
+            <!-- Project 3: Load - Tester -->
+            <article class="project-card sub-project">
+              <div class="project-card-top">
+                <div class="project-badge-row">
+                  <span class="badge badge-accent">CONCURRENCY &amp; SYSTEMS</span>
+                  <span class="badge badge-year mono">2026</span>
+                </div>
+                <a href="https://github.com/mkumar1205-beep/Load-Tester" target="_blank" rel="noopener noreferrer" class="link-icon" title="View Source on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+              <h3 class="project-title">Load - Tester</h3>
+              <p class="project-tagline">
+                CLI based WebSocket load testing &amp; real-time latency benchmark engine.
+              </p>
+              <ul class="project-bullets">
+                <li>This is a CLI based WebSocket load testing tool.</li>
+                <li>It simulates concurrent connections against a target server and tells the user how the server works under stress.</li>
+                <li>It shows real time metrics giving <strong>average, p50, p95, and p99 latency</strong>, throughput and timeouts.</li>
+              </ul>
+              <div class="project-tags">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">WebSockets</span>
+                <span class="tech-tag">Streams</span>
+                <span class="tech-tag">CLI Tool</span>
+                <span class="tech-tag">Performance Benchmarking</span>
+              </div>
+            </article>
+
+            <!-- Project 4: Convo -->
+            <article class="project-card sub-project">
+              <div class="project-card-top">
+                <div class="project-badge-row">
+                  <span class="badge badge-accent">FULL-STACK REAL-TIME</span>
+                  <span class="badge badge-year mono">2026</span>
+                </div>
+                <a href="https://github.com/mkumar1205-beep/Convo" target="_blank" rel="noopener noreferrer" class="link-icon" title="View Source on GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+              <h3 class="project-title">Convo</h3>
+              <p class="project-tagline">
+                Low-latency instant messaging application with room isolation, state persistence, and cryptographic authentication.
+              </p>
+              <ul class="project-bullets">
+                <li>Built a real time chat application enabling instant messaging between users using WebSockets (<strong>Socket.IO</strong>).</li>
+                <li>Implemented secure authentication and authorization using <strong>JWT</strong>, along with protected API routes and password hashing via <strong>bcrypt</strong>.</li>
+                <li>Designed and integrated a <strong>MongoDB database</strong> to store user data and chat messages.</li>
+              </ul>
+              <div class="project-tags">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">JWT</span>
+                <span class="tech-tag">bcrypt</span>
+                <span class="tech-tag">WebSockets</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono"> 03. TECHNICAL SKILLS</div>
+          <h2 class="section-title">Architectural toolkit &amp; engineering stack.</h2>
+          <p class="section-subtitle">
+            Focused on high-performance backend infrastructure, robotics simulation, and secure full-stack delivery.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1: Languages -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <h3 class="category-title">Core Languages</h3>
+            </div>
+            <p class="category-desc">Systems programming, type-safe full-stack engineering, and numerical computing.</p>
+            <div class="skill-chips-wrap">
+              <span class="skill-pill highlight-pill">JavaScript (ESNext)</span>
+              <span class="skill-pill highlight-pill">TypeScript</span>
+              <span class="skill-pill highlight-pill">Python</span>
+              <span class="skill-pill highlight-pill">C++</span>
+              <span class="skill-pill">HTML5</span>
+              <span class="skill-pill">CSS3</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Frameworks & Backend -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              </div>
+              <h3 class="category-title">Frameworks &amp; Backend</h3>
+            </div>
+            <p class="category-desc">Asynchronous event loops, REST &amp; WebSocket APIs, and reactive interfaces.</p>
+            <div class="skill-chips-wrap">
+              <span class="skill-pill highlight-pill">Node.js</span>
+              <span class="skill-pill highlight-pill">FastAPI</span>
+              <span class="skill-pill highlight-pill">Express.js</span>
+              <span class="skill-pill highlight-pill">React 19</span>
+              <span class="skill-pill">Angular</span>
+              <span class="skill-pill">asyncio</span>
+              <span class="skill-pill">WebSockets / Socket.IO</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">Vite</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Databases & Caching -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              </div>
+              <h3 class="category-title">Databases &amp; Caching</h3>
+            </div>
+            <p class="category-desc">Document indexing, key-value caches, pub/sub pipelines, and data persistence.</p>
+            <div class="skill-chips-wrap">
+              <span class="skill-pill highlight-pill">MongoDB</span>
+              <span class="skill-pill highlight-pill">MongoDB Atlas</span>
+              <span class="skill-pill highlight-pill">Redis (Pub/Sub &amp; Caching)</span>
+              <span class="skill-pill">Document Indexing</span>
+              <span class="skill-pill">Schema Modeling</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Robotics, Systems & DevOps -->
+          <div class="skill-category-card">
+            <div class="category-header">
+              <div class="cat-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <h3 class="category-title">Robotics, Systems &amp; Tools</h3>
+            </div>
+            <p class="category-desc">Simulation environments, containerized sandboxes, and defensive tooling.</p>
+            <div class="skill-chips-wrap">
+              <span class="skill-pill highlight-pill">ROS 2 (Jazzy)</span>
+              <span class="skill-pill highlight-pill">Gazebo Harmonic</span>
+              <span class="skill-pill highlight-pill">Nav2</span>
+              <span class="skill-pill highlight-pill">Docker &amp; Compose</span>
+              <span class="skill-pill">FastMCP</span>
+              <span class="skill-pill">mitmproxy</span>
+              <span class="skill-pill">Playwright</span>
+              <span class="skill-pill">Git / GitHub</span>
+              <span class="skill-pill">Linux / Shell</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Honors & Achievements Section -->
+    <section class="section achievements-section" id="achievements">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono"> 04. ACHIEVEMENTS</div>
+          <h2 class="section-title">Academic rigor &amp; competitive honors.</h2>
+          <p class="section-subtitle">
+            Recognized nationally and institutionally for engineering excellence, scholarship, and hackathon victories.
+          </p>
+        </div>
+
+        <div class="achievements-grid">
+          <!-- Award 1: Hackman V10 -->
+          <article class="achievement-card">
+            <div class="achievement-icon-row">
+              <div class="award-badge-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                  <path d="M4 22h16"></path>
+                  <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"></path>
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+                </svg>
+              </div>
+              <span class="award-year mono">1st Prize Winner</span>
+            </div>
+            <h3 class="achievement-title">First Prize &mdash; Hackman V10</h3>
+            <p class="achievement-org">Hackman V10 Hackathon &bull; Bangalore</p>
+            <p class="achievement-desc">
+              Won the first prize at Hackman V10, engineering a high-impact solution that stood out across dozens of competitive project submissions.
+            </p>
+          </article>
+
+          <!-- Award 2: GHCI Scholar -->
+          <article class="achievement-card">
+            <div class="achievement-icon-row">
+              <div class="award-badge-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <span class="award-year mono">National Scholar</span>
+            </div>
+            <h3 class="achievement-title">Grace Hopper Celebration India (GHCI) Scholar</h3>
+            <p class="achievement-org">AnitaB.org India</p>
+            <p class="achievement-desc">
+              Selected as a Grace Hopper Celebration India Scholar, receiving a competitive scholarship to attend one of India’s leading conferences celebrating women in technology and engineering leadership.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Activities Section -->
+    <section class="section education-section" id="education">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono"> 05. ACADEMIC &amp; COMMUNITY</div>
+          <h2 class="section-title">Education &amp; Technical Leadership.</h2>
+        </div>
+
+        <div class="timeline-wrapper">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">B.E. in Computer Science &amp; Engineering (Cyber Security)</h3>
+                  <h4 class="timeline-company">Bangalore, India</h4>
+                </div>
+                <div class="timeline-badge-group">
+                  <span class="badge badge-accent mono">CGPA: 9.65 / 10</span>
+                  <span class="badge badge-year mono">2025 &mdash; 2029</span>
+                </div>
+              </div>
+              <p class="timeline-desc">
+                Engaged in deep coursework covering Network Security, Operating Systems, Cryptography, Algorithms, and Object-Oriented System Design. Maintaining high academic standing with an emphasis on practical implementation of secure backend architectures.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Core Contributor &amp; Web Developer</h3>
+                  <h4 class="timeline-company">Point Blank &mdash; Premier Student Technical Club</h4>
+                </div>
+                <div class="timeline-badge-group">
+                  <span class="badge badge-subtle mono">Active Club Member</span>
+                  <span class="badge badge-year mono">2025 &mdash; Present</span>
+                </div>
+              </div>
+              <p class="timeline-desc">
+                Contributed to the development, optimization, and continuous deployment of the club's official web presence. Spearheaded frontend and backend feature updates, improved search engine optimization (SEO), streamlined asset loading, and assisted with internal tooling for hackathons and club events.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag mono"> 06. CONTACT</div>
+          <h2 class="section-title">Let's build something exceptional.</h2>
+          <p class="section-subtitle">
+            Looking for a passionate backend / full-stack engineer who values code quality, performance metrics, and defensive design? Let’s connect.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details -->
+          <div class="contact-info-card">
+            <h3 class="contact-card-title">Direct Communication</h3>
+            <p class="contact-card-p">
+              Whether you have an internship opportunity, a project to collaborate on, or want to discuss backend architectures, my inbox is always open.
+            </p>
+
+            <div class="contact-channels">
+              <div class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <span class="channel-label mono">EMAIL</span>
+                  <a href="mailto:manyakumar1205@gmail.com" class="channel-val">manyakumar1205@gmail.com</a>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('manyakumar1205@gmail.com', this)" title="Copy Email">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+
+              <div class="channel-item">
+                <div class="channel-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <span class="channel-label mono">PHONE</span>
+                  <a href="tel:+919027800979" class="channel-val">+91-9027800979</a>
+                </div>
+                <button class="copy-btn" onclick="copyToClipboard('+919027800979', this)" title="Copy Phone">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-social-row">
+              <a href="https://github.com/mkumar1205-beep" target="_blank" rel="noopener noreferrer" class="social-btn">GitHub</a>
+              <a href="https://www.linkedin.com/in/mkumar1205/" target="_blank" rel="noopener noreferrer" class="social-btn">LinkedIn</a>
+              <a href="https://x.com/MK2081274016834" target="_blank" rel="noopener noreferrer" class="social-btn">X / Twitter</a>
+              <a href="/resume" class="social-btn">Resume</a>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Form -->
+          <div class="contact-form-card">
+            <h3 class="contact-card-title">Send a Message</h3>
+            <form id="contactForm" class="site-form">
+              <div class="form-group">
+                <label for="name" class="form-label mono">NAME <span class="req">*</span></label>
+                <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Turing" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label mono">EMAIL ADDRESS <span class="req">*</span></label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="alex@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label mono">MESSAGE <span class="req">*</span></label>
+                <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Hi Manya, let's connect regarding a backend role / project..." required></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="submitBtn" class="btn btn-signal btn-lg btn-block">
+                  <span id="btnText">Transmit Message</span>
+                  <svg id="btnIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  <span id="btnSpinner" class="spinner" style="display:none"></span>
+                </button>
+              </div>
+
+              <div id="formFeedback" class="form-feedback" style="display:none"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left mono">
+        <span>Designed &amp; Engineered by <strong>Manya Kumar</strong></span>
+        <span class="footer-dot">•</span>
+        <span>Bangalore, IN &bull; Point Blank</span>
+      </div>
+      <div class="footer-right mono">
+        <a href="#hero" class="back-to-top">&uarr; Back to Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Resume Modal -->
+  <div class="modal-backdrop" id="resumeModal" style="display:none">
+    <div class="modal-dialog modal-dialog-pdf">
+      <div class="modal-header">
+        <div class="modal-title mono">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+          <span>Manya_Kumar_Resume.pdf</span>
+        </div>
+        <div class="modal-header-actions">
+          <a href="/resume" target="_blank" class="btn btn-sm btn-outline">Full Screen</a>
+          <a href="/Manya_Kumar_Resume.pdf" download="Manya_Kumar_Resume.pdf" class="btn btn-sm btn-signal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download PDF
+          </a>
+          <button class="modal-close-btn" id="closeResumeBtn" aria-label="Close Modal">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-body modal-body-pdf">
+        <iframe src="/Manya_Kumar_Resume.pdf" class="resume-pdf-frame" title="Manya Kumar Resume">
+          <div style="padding: 30px; text-align: center; color: var(--text-secondary);">
+            <p>Your browser does not support inline PDF viewing.</p>
+            <p style="margin-top: 12px;"><a href="/Manya_Kumar_Resume.pdf" download="Manya_Kumar_Resume.pdf" class="btn btn-signal btn-sm">Download Manya_Kumar_Resume.pdf</a></p>
+          </div>
+        </iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
-
